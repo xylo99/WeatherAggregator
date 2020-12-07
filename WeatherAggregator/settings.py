@@ -8,8 +8,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#SECRET_KEY='3i!5zw_=woblxmm9t4u0^g2t%+5v3n1cn(c2_8h0-b#m)q__ir'
 
-
+SECRET_KEY='ETn5S0AK9OSm8Qa0+dZ2aTR72lKRpFxyfluCJ5+S/q8NduXLc'
 
 DEBUG = False
 
@@ -64,10 +65,21 @@ WSGI_APPLICATION = 'WeatherAggregator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'weathercontent',
+        'USER': 'contentuser',
+        'PASSWORD': 'strongpw',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

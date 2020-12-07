@@ -14,12 +14,14 @@ def scrape(request):
     lat = geo_dict['latitude']
     lon = geo_dict['longitude']
     header_info = {"User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)"}
+
     url_list = ["https://api.weather.gov/points/",
                 # ^ use-age example: https://api.weather.gov/points/{latitude},{longitude}
                 "https://darksky.net/forecast/"
                 # ^ can also use longitude and latitude in url to get weather data, such as
                 # https://darksky.net/{lat},{lon}/us12/en
                 ]
+
     content = requests.get(url_list[1] + str(lat) + ',' + str(lon) + '/us12/en', headers=header_info, verify=False).content
     soup = BSoup(content, "html.parser")
     weather_site = soup.find_all('span', {"class": "summary-high-low"})
@@ -31,7 +33,6 @@ def scrape(request):
     content_data = content.json()
     forecast_data = requests.get(content_data['properties']['forecast'])
     forecast = forecast_data.json()
-    print(forecast)
     info = forecast['properties']['periods'][0]['detailedForecast']
     m_forecast2 = DayForecast()
     m_forecast2.weather = info
