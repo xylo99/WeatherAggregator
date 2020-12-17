@@ -14,4 +14,4 @@ Run:
 
 ./cleanup.sh
 
-It's  important to run cleanup.sh because it will properly delete all the child processes associated with this program.
+It's  important to run cleanup.sh because it will properly kill all the child processes associated with this program.
